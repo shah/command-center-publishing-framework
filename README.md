@@ -18,8 +18,7 @@ Limitations:
 
 Prerequisites:
 
-* Linux server, tested only on Ubuntun 18.04 LTS
-* user with sudo privileges for setting up some common utilities
+* Linux, tested only on Ubuntu 18.04 LTS
 * curl
 
 Included:
