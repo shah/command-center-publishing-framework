@@ -157,7 +157,7 @@ these housekeeping files:
 ## Facts Generator
 
 Before the project.ccpf-defn.jsonnet file is interpreted, there are a series of "facts generator" scripts that
-can be run to pre-populate configuration entries from the environment or an existing database engine (dialect). 
+can be run to pre-populate configuration entries from the environment or other dynamic locations. 
 Facts can be retrieved from osquery, from the environment, or as arbitrary shell scripts snippets.
 
 The Makefile uses this script by default, but it can be overridden:
