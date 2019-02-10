@@ -19,6 +19,7 @@ set -euo pipefail
 
 DEST_PATH_RELATIVE=`realpath --relative-to="$CCPF_PROJECT_HOME" "$DEST_PATH"`
 DEST_FILE_EXTN=.ccpf-facts.json
+OSQUERY_LOG=$DEST_PATH/osquery.log
 GREEN=`tput -Txterm setaf 2`
 YELLOW=`tput -Txterm setaf 3`
 WHITE=`tput -Txterm setaf 7`
@@ -29,6 +30,8 @@ if [ ! -d "$DEST_PATH" ]; then
     exit 1
 fi
 
+touch $OSQUERY_LOG
+
 logInfo() {
 	if [ "${CCPF_LOG_LEVEL:-}" = 'INFO' ]; then
 		echo "$1"
@@ -37,12 +40,14 @@ logInfo() {
 
 osqueryFactsSingleRow() {
     logInfo "Running osQuery single row, saving to ${YELLOW}$DEST_PATH_RELATIVE/$1$DEST_FILE_EXTN${RESET}: ${GREEN}$2${RESET}"
-	osqueryi --json "$2" | $CCPF_JQ '.[0]' > $DEST_PATH/$1$DEST_FILE_EXTN
+	echo "singleRow: osqueryi --json '$2'" >> $OSQUERY_LOG
+	osqueryi --json "$2" | $CCPF_JQ '.[0]' 2>> $OSQUERY_LOG > $DEST_PATH/$1$DEST_FILE_EXTN
 }
 
 osqueryFactsMultipleRows() {
     logInfo "Running osQuery multi row, saving to ${YELLOW}$DEST_PATH_RELATIVE/$1$DEST_FILE_EXTN${RESET}: ${GREEN}$2${RESET}"
-	osqueryi --json "$2" > $DEST_PATH/$1$DEST_FILE_EXTN
+	echo "multipleRows: osqueryi --json '$2'" >> $OSQUERY_LOG
+	osqueryi --json "$2" 2>> $OSQUERY_LOG > $DEST_PATH/$1$DEST_FILE_EXTN
 }
 
 shellEvalFacts() {

@@ -114,6 +114,18 @@ configure: generate-project-conf
 ## Opposite of configure, remove all generated artifacts and "reset" directory
 clean: clean-generated-project-conf
 
+doctor:
+	$(CCPF_HOME)/bin/doctor.sh
+
+## Remove the vendor directory and all contents
+clean-vendor: 
+	rm -rf $(CCPF_PROJECT_HOME)/vendor
+
+## Place Google Go, Java, etc. into vendor directory 
+vendorize: clean-vendor
+	VENDOR_HOME=$(CCPF_PROJECT_HOME)/vendor $(CCPF_HOME)/bin/vendorize-golang-ecosystem.sh
+	VENDOR_HOME=$(CCPF_PROJECT_HOME)/vendor $(CCPF_HOME)/bin/vendorize-java-ecosystem.sh
+
 TARGET_MAX_CHAR_NUM=15
 # All targets should have a ## Help text above the target and they'll be automatically collected
 # Show help, using auto generator from https://gist.github.com/prwhite/8168133

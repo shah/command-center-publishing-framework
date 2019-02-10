@@ -25,7 +25,7 @@ PATH="$VENDOR_GOLANG_BIN:$PATH" "$VENDOR_GOLANG_BIN"/go run bootstrap.go
 
 echo "Vendor'd GOHOME is available in $VENDOR_GOLANG_BIN"
 echo "Vendor'd GOPATH is available in $VENDOR_GOLANG_ECOSYSTEM_HOME"
-printf "[ ] "
+printf "[*] "
 "$VENDOR_GOLANG_BIN"/go version
-printf "[ ] "
+printf "[*] "
 "$VENDOR_GOLANG_ECOSYSTEM_HOME"/bin/mage -version | head -n 1
