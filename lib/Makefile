@@ -13,8 +13,8 @@ CCPF_PROJECT_NAME ?= $(CURRENT_DIR_NAME)
 CCPF_PROJECT_HOME ?= $(CURRENT_DIR_PATH)
 
 CCPF_HOME ?= /opt/command-center-publishing-framework
-CCPF_JSONNET ?= $(CCPF_HOME)/bin/jsonnet-v0.11.2
-CCPF_JQ ?= $(CCPF_HOME)/bin/jq-1.6
+CCPF_JSONNET ?= $(CCPF_HOME)/bin/jsonnet
+CCPF_JQ ?= $(CCPF_HOME)/bin/jq
 CCPF_LOG_LEVEL ?= "NONE"
 CCPF_FACTS_FILES ?= $(CCPF_HOME)/etc/common.ccpf-factsgen.jsonnet:$(CCPF_PROJECT_HOME)/project.ccpf-factsgen.jsonnet
 JSONNET_PATH ?= $(CCPF_PROJECT_HOME)/etc:$(CCPF_PROJECT_HOME)/lib:$(HOME)/.ccpf/secrets:$(HOME)/.ccpf/etc:$(CCPF_HOME)/lib:$(CCPF_HOME)/etc

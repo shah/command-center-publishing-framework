@@ -22,13 +22,13 @@ check-exists() {
 
 check-exists make "make -version" "Make not installed, install using OS package management"
 
-JQ=$CCPF_HOME/bin/jq-1.6
+JQ=$CCPF_HOME/bin/jq
 check-exists $JQ "$JQ --version" "jq not found, but it's supposed to be part of the CCPF package"
 
-JSONNET=$CCPF_HOME/bin/jsonnet-v0.11.2
+JSONNET=$CCPF_HOME/bin/jsonnet
 check-exists $JSONNET "$JSONNET --version" "Jsonnet not found, but it's supposed to be part of the CCPF package"
 
-HUGO=$CCPF_HOME/bin/hugo-0.54
+HUGO=$CCPF_HOME/bin/hugo
 check-exists $HUGO "$HUGO version" "Hugo not found, but it's supposed to be part of the CCPF package"
 
 JAVA=vendor/java/home/bin/java 

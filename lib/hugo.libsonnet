@@ -1,6 +1,6 @@
 local context = import "context.ccpf-facts.json";
 
 {
-    hugoCmd: context.CCPF_HOME + "/bin/hugo-0.54",
+    hugoCmd: context.CCPF_HOME + "/bin/hugo",
     mainSourcePath: "hugo-src-main"
 }
