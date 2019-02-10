@@ -28,7 +28,7 @@
 
 	vendor : {
 		path : std.extVar('projectHome') + "/vendor",
-		javaHome : $.vendor.path + "/java/jdk-11.0.2",
+		javaHome : $.vendor.path + "/java/home",
 		goHome : $.vendor.path + "/gohome",
 		goPath : $.vendor.path + "/gopath",
 		mageCmd : $.vendor.goPath + "/bin/mage",
