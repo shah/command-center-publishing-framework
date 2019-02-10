@@ -11,7 +11,7 @@ YELLOW=`tput -Txterm setaf 3`
 WHITE=`tput -Txterm setaf 7`
 RESET=`tput -Txterm sgr0`
 
-check-exists() {
+check-binary-exists() {
     if ! [ -x "$(command -v $1)" ]; then
         echo "[ ] $3" >&2
     else
@@ -20,22 +20,37 @@ check-exists() {
     fi
 }
 
-check-exists make "make -version" "Make not installed, install using OS package management"
+check-java-jar-exists() {
+    if ! [ -f "$1" ]; then
+        echo "[ ] $3" >&2
+    else
+        printf "[*] " 
+        echo `eval vendor/java/home/bin/java -jar $2 | head -n 1`
+    fi
+}
+
+check-binary-exists make "make -version" "Make not installed, install using OS package management"
 
 JQ=$CCPF_HOME/bin/jq
-check-exists $JQ "$JQ --version" "jq not found, but it's supposed to be part of the CCPF package"
+check-binary-exists $JQ "$JQ --version" "jq not found, but it's supposed to be part of the CCPF package"
 
 JSONNET=$CCPF_HOME/bin/jsonnet
-check-exists $JSONNET "$JSONNET --version" "Jsonnet not found, but it's supposed to be part of the CCPF package"
-
-HUGO=$CCPF_HOME/bin/hugo
-check-exists $HUGO "$HUGO version" "Hugo not found, but it's supposed to be part of the CCPF package"
-
-JAVA=vendor/java/home/bin/java 
-check-exists $JAVA "$JAVA --version" "Java not installed at $JAVA, vendor it using vendorize-java-ecosystem.sh"
+check-binary-exists $JSONNET "$JSONNET --version" "Jsonnet not found, but it's supposed to be part of the CCPF package"
 
 GO=vendor/gohome/go/bin/go
-check-exists $GO "$GO version" "Google Go not installed at $GO, vendor it using vendorize-golang-ecosystem.sh"
+check-binary-exists $GO "$GO version" "Google Go not installed at $GO, vendor it using vendorize-golang-ecosystem.sh"
 
 MAGE=vendor/gopath/bin/mage
-check-exists $MAGE "$MAGE -version" "Mage not installed at $MAGE, vendor it using vendorize-golang-ecosystem.sh"
+check-binary-exists $MAGE "$MAGE -version" "Mage not installed at $MAGE, vendor it using vendorize-golang-ecosystem.sh"
+
+HUGO=$CCPF_HOME/bin/hugo
+check-binary-exists $HUGO "$HUGO version" "Hugo not found, but it's supposed to be part of the CCPF package"
+
+JAVA=vendor/java/home/bin/java 
+check-binary-exists $JAVA "$JAVA --version" "Java not installed at $JAVA, vendor it using vendorize-java-ecosystem.sh"
+
+GRAPHVIZ_DOT=dot 
+check-binary-exists $GRAPHVIZ_DOT "$GRAPHVIZ_DOT -V" "Graphviz Dot not installed, install using OS package management"
+
+PLANTUML="$CCPF_HOME/bin/plantuml.jar" 
+check-java-jar-exists $PLANTUML "$PLANTUML -version" "PlantUML not installed, but it's supposed to be part of the CCPF package"
