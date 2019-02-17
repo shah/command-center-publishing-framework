@@ -14,12 +14,12 @@ if [ -d "$CCPF_HOME" ]; then
     sudo git pull
     echo "CCPF upgraded in $CCPF_HOME"
 else
-    sudo mkdir -p $CCPF_HOME
-    sudo git clone $CCPF_SRC_REPO_URL $CCPF_HOME
-    sudo ln -s $CCPF_HOME/bin/ccpf-init $CCPF_BIN_LINKS_PATH/ccpf-init
-    sudo ln -s $CCPF_HOME/bin/ccpf-make $CCPF_BIN_LINKS_PATH/ccpf-make
+    sudo mkdir -p "$CCPF_HOME"
+    sudo git clone "$CCPF_SRC_REPO_URL" "$CCPF_HOME"
+    sudo ln -s "$CCPF_HOME/bin/ccpf-init" "$CCPF_BIN_LINKS_PATH/ccpf-init"
+    sudo ln -s "$CCPF_HOME/bin/ccpf-make" "$CCPF_BIN_LINKS_PATH/ccpf-make"
     echo "CCPF installed in $CCPF_HOME"
     echo "ccpf-init, ccpf-make symlinked in $CCPF_BIN_LINKS_PATH"
 fi
 
-$CCPF_HOME/bin/doctor.sh
+"$CCPF_HOME"/bin/doctor.sh
