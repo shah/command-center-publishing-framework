@@ -40,4 +40,13 @@
 		groupId : std.extVar('currentUserGroupId'),
 		home : std.extVar('currentUserHome')
 	},
+
+	environment: {
+		common: {
+			"PATH" : $.vendor.goPath + "/bin:" + $.vendor.javaHome + "/bin:$PATH",
+			"JAVA_HOME" : $.vendor.javaHome,
+			"GOHOME" : $.vendor.goHome,
+			"GOPATH" : $.vendor.goPath,
+		}
+	},
 }

@@ -1,5 +1,5 @@
 {
-  # Similar to std.MinifestIni(), but creates items in an .env file
+  # Similar to std.manifestIni(), but creates items in an .env file
   manifestEnv(env)::
     local body_lines(body) =
       std.join([], [
