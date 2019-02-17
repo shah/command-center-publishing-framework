@@ -112,8 +112,9 @@ configure: generate-project-conf
 	fi
 
 ## Opposite of configure, remove all generated artifacts and "reset" directory
-clean: clean-generated-project-conf
+unconfigure: clean-generated-project-conf
 
+## Check all dependencies
 doctor:
 	$(CCPF_HOME)/bin/doctor.sh
 
@@ -130,6 +131,7 @@ TARGET_MAX_CHAR_NUM=15
 # All targets should have a ## Help text above the target and they'll be automatically collected
 # Show help, using auto generator from https://gist.github.com/prwhite/8168133
 help:
+	@echo 'Command Center Publishing Framework $(CCPF_VERSION)'
 	@echo 'Usage:'
 	@echo '  ${YELLOW}make${RESET} ${GREEN}<target>${RESET}'
 	@echo ''
@@ -143,8 +145,6 @@ help:
 		} \
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
-	@echo ''
-	@echo "NOTE: targets defined in $(CCPF_CUSTOM_INCLUDE_FILES) are not shown because that file could be generated."
 	@echo ''
 	@echo '${YELLOW}JSONNET_PATH${RESET}=${GREEN}$(JSONNET_PATH)${RESET}'
 	@echo '${YELLOW}CCPF_HOME${RESET}=${GREEN}$(CCPF_HOME)${RESET}'

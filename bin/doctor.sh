@@ -53,8 +53,10 @@ check-binary-exists $HUGO "$HUGO version" "Hugo not found, but it's supposed to 
 JAVA=vendor/java/home/bin/java 
 check-binary-exists $JAVA "$JAVA --version" "Java not installed at $JAVA, vendor it using vendorize-java-ecosystem.sh"
 
+if [ -x "$(command -v $JAVA)" ]; then
+    PLANTUML="$CCPF_HOME/bin/plantuml.jar" 
+    check-java-jar-exists $PLANTUML "$PLANTUML -version" "PlantUML not installed, but it's supposed to be part of the CCPF package"
+fi    
+
 GRAPHVIZ_DOT=dot 
 check-binary-exists $GRAPHVIZ_DOT "$GRAPHVIZ_DOT -V" "Graphviz Dot not installed, install using OS package management"
-
-PLANTUML="$CCPF_HOME/bin/plantuml.jar" 
-check-java-jar-exists $PLANTUML "$PLANTUML -version" "PlantUML not installed, but it's supposed to be part of the CCPF package"
