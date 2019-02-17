@@ -11,7 +11,7 @@
 
   shellEvals: 
   [
-    // TODO: this was copied from CCF, needs to be updated for CCPF
+    // TIP: Check out http://www.bashoneliners.com/ for many useful Bash one-liners
 
     // Define the CCPF-specific commands and utilities available
     // { name: "hugo", key: "command", evalAsTextValue: "ls -1 $CCPF_HOME/bin/hugo-*" },
