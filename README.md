@@ -10,7 +10,8 @@ databases or other third-party applications such as code analysis tools, ticket
 management systems, and a variety of other data sources).
 
 The CCPF's job is to fill the gaps of page generation and edge side includes
-(ESIs).
+(ESIs) plus make it easy to create containers from the output and publish them
+easily via a web server.
 
 Limitations:
 
@@ -135,7 +136,7 @@ sensible defaults:
 * **CCPF_LOG_LEVEL** should be set to INFO to see verbose messages as CCPF does its job (default is NONE).
 * **CCPF_FACTS_FILES** is where CCPF stores fact files - see "Facts Generator" section below for explanation.
 
-## Migration Makefile
+## Publishing Makefile
 
 Each project home ("CCPF_PROJECT_HOME") directory may contain a Makefile which is, usually, symlink'd to
 CCPF_HOME/lib/Makefile (either manually or using CCPF_HOME/bin/ccpf-init script). 
@@ -257,3 +258,8 @@ various CCPF artifacts:
 * **vendor** directory. Google Go (e.g. Mage) and other custom libraries reside
   here. Only required during the CCPF code generation process, not in final 
   publication (which is HTML static site).
+
+## TODO
+
+* Check out [goexpose](https://github.com/phonkee/goexpose) to create webhooks
+* 
