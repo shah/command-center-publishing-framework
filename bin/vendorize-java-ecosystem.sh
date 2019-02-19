@@ -4,6 +4,8 @@ set -euo pipefail
 # Expecting environment variables upon entry:
 # * VENDOR_HOME - the path to install vendor'd items into
 
+# TODO: Evaluate and switch to https://github.com/shyiko/jabba (NVM-like tool for JVMs)
+
 export VENDOR_JAVA_INSTALL_VERSION="${VENDOR_JAVA_INSTALL_VERSION:-openjdk-11.0.2}"
 export VENDOR_JAVA_ROOT="${VENDOR_JAVA_ROOT:-$VENDOR_HOME/java}"
 export VENDOR_JAVA_HOME_ORIG="${VENDOR_JAVA_HOME_ORIG:-$VENDOR_JAVA_ROOT/jdk-11.0.2}"
