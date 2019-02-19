@@ -32,7 +32,7 @@ Installed, if not available:
 
 Vendored:
 
-* Google Go, Mage, Java
+* Google Go, Mage, Java, NVM (NodeJS)
 
 ## CCPF Functionality
 
@@ -95,6 +95,8 @@ The output will look something like this:
     [*] Hugo Static Site Generator v0.54.0-B1A82C61 linux/amd64 BuildDate: 2019-02-01T09:40:34Z
     [*] openjdk 11.0.2 2019-01-15
     [*] PlantUML version 1.2019.00 (Sun Jan 13 10:46:42 EST 2019)
+    [*] Node Version Manager (NVM) 0.34.0
+    [*] NodeJS v10.15.1
     [*] dot - graphviz version 2.40.1 (20161225.0304)
 
 If any dependencies are missing, you'll get instructions for how to install them.
@@ -262,4 +264,4 @@ various CCPF artifacts:
 ## TODO
 
 * Check out [goexpose](https://github.com/phonkee/goexpose) to create webhooks
-* 
+* Check out [Distroless Docker Images](https://github.com/GoogleContainerTools/distroless) for language focused docker images, minus the operating system
