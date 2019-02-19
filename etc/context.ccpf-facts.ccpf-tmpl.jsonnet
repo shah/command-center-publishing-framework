@@ -17,6 +17,10 @@
 		command: std.extVar('CCPF_JQ'),
 	},
 
+	git : {
+		log2jsonCmd: std.extVar('CCPF_HOME') + "/bin/git-log-as-json.sh"
+	},
+
 	CCPF_Makefile : {
 		customPreConfigureScriptName : std.extVar('CCPF_MakeFileCustomPreConfigureScriptName'),
 		customPostConfigureScriptName : std.extVar('CCPF_MakeFileCustomPostConfigureScriptName'),
