@@ -18,7 +18,7 @@
 	},
 
 	git : {
-		log2jsonCmd: std.extVar('CCPF_HOME') + "/bin/git-log-as-json.sh"
+		logAsJsonCmd: std.extVar('CCPF_HOME') + "/bin/git-log-as-json.sh"
 	},
 
 	CCPF_Makefile : {
