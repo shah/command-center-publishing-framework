@@ -6,7 +6,7 @@ local eth0 = import "eth0-interface-localhost.ccpf-facts.json";
 	main: {
 		id: "main",
 		sourcePath : "hugo-src-main",
-		publishPath : "publication" 
+		publishPath : "hugo-publish-main" 
 	},
 
     make(id, sourcePath, publishPath): 
