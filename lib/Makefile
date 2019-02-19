@@ -126,6 +126,7 @@ clean-vendor:
 vendorize: clean-vendor
 	VENDOR_HOME=$(CCPF_PROJECT_HOME)/vendor $(CCPF_HOME)/bin/vendorize-golang-ecosystem.sh
 	VENDOR_HOME=$(CCPF_PROJECT_HOME)/vendor $(CCPF_HOME)/bin/vendorize-java-ecosystem.sh
+	VENDOR_HOME=$(CCPF_PROJECT_HOME)/vendor $(CCPF_HOME)/bin/vendorize-nodejs-ecosystem.sh
 
 TARGET_MAX_CHAR_NUM=15
 # All targets should have a ## Help text above the target and they'll be automatically collected

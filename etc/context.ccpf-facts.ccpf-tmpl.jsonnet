@@ -36,6 +36,7 @@
 		goHome : $.vendor.path + "/gohome",
 		goPath : $.vendor.path + "/gopath",
 		mageCmd : $.vendor.goPath + "/bin/mage",
+		nvmDir : $.vendor.path + "/nvm",
 	},
 
 	currentUser : {
@@ -51,6 +52,7 @@
 			"JAVA_HOME" : $.vendor.javaHome,
 			"GOHOME" : $.vendor.goHome,
 			"GOPATH" : $.vendor.goPath,
+			"NVM_DIR" : $.vendor.nvmDir,
 		}
 	},
 }
