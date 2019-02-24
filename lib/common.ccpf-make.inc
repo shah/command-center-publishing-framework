@@ -15,10 +15,19 @@ endef
 vendor/gohome:
 	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-golang-ecosystem.sh
 
+$(CCPF_PROJECT_VENDOR_HOME)/gohome:
+	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-golang-ecosystem.sh
+
 vendor/java/home:
 	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-java-ecosystem.sh
 
+$(CCPF_PROJECT_VENDOR_HOME)/java/home:
+	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-java-ecosystem.sh
+
 vendor/nvm:
+	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-nodejs-ecosystem.sh
+
+$(CCPF_PROJECT_VENDOR_HOME)/nvm:
 	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-nodejs-ecosystem.sh
 
 TARGET_MAX_CHAR_NUM=15
