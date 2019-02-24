@@ -21,15 +21,15 @@ local hugo = import "hugo.libsonnet";
 		clean-generated-diagrams-puml-%(id)s.png:
 			rm -rf %(sourcePathAbs)s/static/images/generated
 
-		## Show diagrams discovered (PlantUML, etc.)
+		## Show diagrams discovered (PlantUML, etc.) in %(sourcePathRel)s
 		list-diagrams-%(id)s: 
 			echo $(CCPF_PROJECT_PUML_DIAGRAM_SOURCES_%(id)s)
 			echo $(CCPF_PROJECT_PUML_DIAGRAMS_PNG_%(id)s)
 
-		## Generate all diagrams (PlantUML, etc.)
+		## Generate all diagrams (PlantUML, etc.) in %(sourcePathRel)s
 		generate-diagrams-%(id)s: $(CCPF_PROJECT_PUML_DIAGRAMS_PNG_%(id)s)
 
-		## Delete all generated diagrams (PlantUML, etc.)
-		clean-generated-diagrams-%(id)s: clean-generated-diagrams-puml.png
+		## Delete all generated diagrams (PlantUML, etc.) in %(sourcePathRel)s
+		clean-generated-diagrams-%(id)s: clean-generated-diagrams-puml-%(id)s.png
 ||| % { id: id, sourcePathRel: sourcePath, sourcePathAbs: context.projectHome + '/' + sourcePath, javaHome: context.vendor.javaHome, plantUmlJar: $.plantUmlJar },
 }
