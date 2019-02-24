@@ -14,11 +14,12 @@ local hugo = import "hugo.libsonnet";
 		CCPF_PROJECT_PUML_DIAGRAMS_PNG_%(id)s = $(patsubst %(sourcePathRel)s/%%.diagram.puml, %(sourcePathAbs)s/static/images/generated/diagrams/%%.diagram.png, $(CCPF_PROJECT_PUML_DIAGRAM_SOURCES_%(id)s))
 
 		%(sourcePathAbs)s/static/images/generated/diagrams/%%.diagram.png: %(sourcePathRel)s/%%.diagram.puml
-			echo "Generating diagram: $<"
+			$(call logInfo,Generated diagram $(YELLOW)$<$(RESET))
 			mkdir -p "$(@D)"
 			%(javaHome)s/bin/java -jar %(plantUmlJar)s -tpng -o "$(@D)" "$<"
 
 		clean-generated-diagrams-puml-%(id)s.png:
+			$(call logInfo,Deleting diagrams in $(YELLOW)%(sourcePathAbs)s/static/images/generated$(RESET))
 			rm -rf %(sourcePathAbs)s/static/images/generated
 
 		## Show diagrams discovered (PlantUML, etc.) in %(sourcePathRel)s
@@ -27,7 +28,7 @@ local hugo = import "hugo.libsonnet";
 			echo $(CCPF_PROJECT_PUML_DIAGRAMS_PNG_%(id)s)
 
 		## Generate all diagrams (PlantUML, etc.) in %(sourcePathRel)s
-		generate-diagrams-%(id)s: $(CCPF_PROJECT_PUML_DIAGRAMS_PNG_%(id)s)
+		generate-diagrams-%(id)s: %(javaHome)s $(CCPF_PROJECT_PUML_DIAGRAMS_PNG_%(id)s)
 
 		## Delete all generated diagrams (PlantUML, etc.) in %(sourcePathRel)s
 		clean-generated-diagrams-%(id)s: clean-generated-diagrams-puml-%(id)s.png
