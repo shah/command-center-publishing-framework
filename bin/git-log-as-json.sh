@@ -2,6 +2,8 @@
 set -euo pipefail
 
 CCPF_HOME="${CCPF_HOME:-/opt/command-center-publishing-framework}"
+CCPF_JQ="${CCPF_JQ:-$CCPF_HOME/bin/jq}"
+
 JSON_FORMAT=$(cat <<-'END_JSON_FORMAT'
 {
     "commit": "%H",
@@ -37,4 +39,4 @@ END_JSON_FORMAT
 # For each log item, convert it to JSON and pass it to jq which will combine the 
 # lines into a single array. The output can be saved into a .json file.
 
-git log --pretty=format:"$JSON_FORMAT" $@ | $CCPF_HOME/bin/jq --slurp .
+git log --pretty=format:"$JSON_FORMAT" $@ | $CCPF_JQ --slurp .
