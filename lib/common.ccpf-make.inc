@@ -30,6 +30,12 @@ vendor/nvm:
 $(CCPF_PROJECT_VENDOR_HOME)/nvm:
 	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-nodejs-ecosystem.sh
 
+vendor/oauth2_proxy:
+	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-oauth2_proxy.sh
+
+$(CCPF_PROJECT_VENDOR_HOME)/oauth2_proxy:
+	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-oauth2_proxy.sh
+
 TARGET_MAX_CHAR_NUM=15
 # All targets should have a ## Help text above the target and they'll be automatically collected
 # Show help, using auto generator from https://gist.github.com/prwhite/8168133

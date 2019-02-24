@@ -58,16 +58,17 @@ if [ -x "$(command -v $JAVA)" ]; then
     check-java-jar-exists $PLANTUML "$PLANTUML -version" "PlantUML not installed, but it's supposed to be part of the CCPF package"
 fi    
 
-NVM_DIR="${NVM_DIR:-vendor/nvm}"
-if [ -d $NVM_DIR ]; then
-    source "$NVM_DIR/nvm.sh"
-    printf "[*] Node Version Manager (NVM) "
-    nvm --version | head -n 1
+export NODE_VERSION=default
+NVM_EXEC="vendor/nvm/nvm-exec"
+if [ -x "$(command -v $NVM_EXEC)" ]; then
+    printf "[*] Node Package Manager "
+    $NVM_EXEC npm --version | head -n 1
     printf "[*] NodeJS "
-    node --version | head -n 1
-else
-    echo "[ ] Node Version Manager (NVM) not installed, vendor it using vendorize-nodejs-ecosystem.sh"
-fi
+    $NVM_EXEC node --version | head -n 1
+fi    
+
+OAUTH2_PROXY=vendor/oauth2_proxy
+check-binary-exists $OAUTH2_PROXY "$OAUTH2_PROXY --version" "oAuth2 Proxy not installed, vendor it using vendorize-oauth2_proxy.sh"
 
 GRAPHVIZ_DOT=dot 
 check-binary-exists $GRAPHVIZ_DOT "$GRAPHVIZ_DOT -V" "Graphviz Dot not installed, install using OS package management"
