@@ -9,6 +9,13 @@ local eth0 = import "eth0-interface-localhost.ccpf-facts.json";
 		publishPath : "hugo-publish-main" 
 	},
 
+	shortCode: {
+		plantUmlDiagram: {
+			fileName(sourcePath): "%(sourcePath)s/layouts/shortcodes/plantuml.html" % {sourcePath : sourcePath},
+			content: '<img class="plantUML" src="/images/generated/diagrams/{{ .Get "diagram" }}.diagram.png" align="{{ if .Get "align" }}{{ .Get "align" }}{{ else }}center{{ end }}"/>'
+		}
+	},
+
     make(id, sourcePath, publishPath): 
 		"" + |||
 		## Serve %(id)s Hugo content at http://%(ipAddress)s
