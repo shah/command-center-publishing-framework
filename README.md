@@ -123,7 +123,7 @@ The CCPF_PROJECT_HOME can be placed anywhere but follows these conventions:
 * **CCPF_HOME/bin/ccpf-make** is a convenience script to run the Makefile in a **CCPF_PROJECT_HOME** if CCPF_HOME/lib/Makefile 
   is not symlink'd. This script is symlink'd as /usr/bin/ccpf-make by the installer.
 * **bin/doctor.sh** is used to check dependencies and related requirements.
-* **bin/generate-ccpf-facts.sh** is used to create "facts" (see below) that the CCPF ecosystem can use.
+* **bin/configure-ccpf-facts.sh** is used to create "facts" (see below) that the CCPF ecosystem can use.
 * **CCPF_HOME/bin/vendorize-golang-ecosystem.sh** is a convenience script create a local Google Go installation.
 * **CCPF_HOME/bin/vendorize-java-ecosystem.sh** is a convenience script create a local Java installation.
 * **CCPF_HOME/bin/vendorize-nodejs-ecosystem.sh** is a convenience script create a local NodeJS installation.
@@ -190,7 +190,7 @@ Facts can be retrieved from osquery, from the environment, or as arbitrary shell
 
 The Makefile uses this script by default, but it can be overridden:
 
-    CCPF_FACTS_GENERATOR_SCRIPT ?= $(CCPF_HOME)/bin/generate-ccpf-facts.sh
+    CCPF_FACTS_CONFIGURATOR_SCRIPT ?= $(CCPF_HOME)/bin/configure-ccpf-facts.sh
 
 Here's an example of the default $(CCPF_HOME)/etc/facts-generator.ccpf-conf.jsonnet configuration file:
 
