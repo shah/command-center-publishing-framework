@@ -13,19 +13,21 @@ RESET=`tput -Txterm sgr0`
 
 check-binary-exists() {
     if ! [ -x "$(command -v $1)" ]; then
-        echo "[ ] $3" >&2
+        echo "[ ] $YELLOW$3$RESET" >&2
     else
-        printf "[*] " 
+        printf "[$GREEN*$RESET] $GREEN" 
         echo `eval $2 | head -n 1`
+        printf "$RESET"
     fi
 }
 
 check-java-jar-exists() {
     if ! [ -f "$1" ]; then
-        echo "[ ] $3" >&2
+        echo "[ ] $YELLOW$3$RESET" >&2
     else
-        printf "[*] " 
+        printf "[$GREEN*$RESET] $GREEN" 
         echo `eval vendor/java/home/bin/java -jar $2 | head -n 1`
+        printf "$RESET"
     fi
 }
 
@@ -61,10 +63,14 @@ fi
 export NODE_VERSION=default
 NVM_EXEC="vendor/nvm/nvm-exec"
 if [ -x "$(command -v $NVM_EXEC)" ]; then
-    printf "[*] Node Package Manager "
+    printf "[${GREEN}*${RESET}] ${GREEN}Node Package Manager "
     $NVM_EXEC npm --version | head -n 1
-    printf "[*] NodeJS "
+    printf "$RESET"
+    printf "[${GREEN}*${RESET}] ${GREEN}NodeJS "
     $NVM_EXEC node --version | head -n 1
+    printf "$RESET"
+else
+    echo "[ ] ${GREEN}NodeJS not installed, vendor it using vendorize-nodejs-ecosystem.sh${RESET}"
 fi    
 
 OAUTH2_PROXY=vendor/oauth2_proxy
