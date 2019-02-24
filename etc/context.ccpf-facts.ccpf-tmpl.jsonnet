@@ -37,7 +37,6 @@
 		goPath : $.vendor.path + "/gopath",
 		mageCmd : $.vendor.goPath + "/bin/mage",
 		nvmDir : $.vendor.path + "/nvm",
-		oauth2ProxyCmd : $.vendor.path + "/oauth2_proxy",
 	},
 
 	currentUser : {
