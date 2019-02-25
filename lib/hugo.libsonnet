@@ -6,7 +6,9 @@ local eth0 = import "eth0-interface-localhost.ccpf-facts.json";
 	main: {
 		id: "main",
 		sourcePath : "hugo-src-main",
-		publishPath : "hugo-publish-main" 
+		sourcePathAbs : context.projectHome + "/" + $.main.sourcePath,
+		publishPath : "hugo-publish-main",
+		publishPathAbs : context.projectHome + "/" + $.main.publishPath,
 	},
 
 	shortCode: {
