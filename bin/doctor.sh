@@ -33,6 +33,9 @@ check-java-jar-exists() {
 
 check-binary-exists make "make -version" "Make not installed, install using OS package management"
 
+check-binary-exists docker "docker --version" "Docker not installed, install it if you need it"
+check-binary-exists docker-compose "docker-compose --version" "Docker Compose not installed, install it if you need it"
+
 JQ=$CCPF_HOME/bin/jq
 check-binary-exists $JQ "$JQ --version" "jq not found, but it's supposed to be part of the CCPF package"
 
