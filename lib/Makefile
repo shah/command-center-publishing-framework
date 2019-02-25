@@ -108,6 +108,9 @@ configure: configure-project
 ## Opposite of configure, remove all generated artifacts and "reset" directory
 unconfigure: unconfigure-project
 
+## Run unconfigure and then configure together
+reconfigure: unconfigure configure
+
 ## Check all dependencies
 doctor:
 	$(CCPF_HOME)/bin/doctor.sh
