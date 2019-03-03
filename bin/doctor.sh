@@ -42,6 +42,9 @@ check-binary-exists $JQ "$JQ --version" "jq not found, but it's supposed to be p
 JSONNET=$CCPF_HOME/bin/jsonnet
 check-binary-exists $JSONNET "$JSONNET --version" "Jsonnet not found, but it's supposed to be part of the CCPF package"
 
+SHELLCHECK=$CCPF_HOME/bin/shellcheck
+check-binary-exists $SHELLCHECK "$SHELLCHECK --version" "Shellcheck not found, but it's supposed to be part of the CCPF package"
+
 OSQUERY=osquery
 check-binary-exists ${OSQUERY}d "${OSQUERY}d --version" "osQuery Daemon not found, install using their own package"
 check-binary-exists ${OSQUERY}i "${OSQUERY}i --version" "osQuery CLI not found, install using their own package"
