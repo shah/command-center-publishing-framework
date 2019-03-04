@@ -13,9 +13,6 @@ CCPF_PROJECT_NAME ?= $(CURRENT_DIR_NAME)
 CCPF_PROJECT_HOME ?= $(CURRENT_DIR_PATH)
 CCPF_PROJECT_VENDOR_HOME ?= $(CCPF_PROJECT_HOME)/vendor
 
-# Find all Makefiles in subdirectories except ./vendor
-CCPF_PROJECT_MAKEFILE_SUBDIRS = $(shell find . -type f -name 'Makefile' ! -path . ! -path "./vendor/*" | xargs -I{} dirname {})
-
 CCPF_HOME ?= /opt/command-center-publishing-framework
 CCPF_JSONNET ?= $(CCPF_HOME)/bin/jsonnet
 CCPF_JQ ?= $(CCPF_HOME)/bin/jq
@@ -127,8 +124,9 @@ clean-MAIN: unconfigure clean-vendor
 
 .ONESHELL:
 make-subdirs-with-MAKECMDGOALS:
-	for subDir in "$(CCPF_PROJECT_MAKEFILE_SUBDIRS)" ; do \
-		$(call logInfo,Running make $(MAKECMDGOALS) in $(GREEN)$$subDir$(RESET))
+	$(call logInfo,Starting make $(GREEN)$(MAKECMDGOALS)$(RESET) in all subdirectories)
+	for subDir in $$(find . -type f -name 'Makefile' ! -path . ! -path "./vendor/*" | xargs -I{} dirname {}) ; do \
+		$(call logInfo,Running make $(GREEN)$(MAKECMDGOALS)$(RESET) in $(GREEN)$$subDir$(RESET))
 		CCPF_LOG_LEVEL=$(CCPF_LOG_LEVEL) \
 		CCPF_HOME=$(CCPF_HOME) \
 		CCPF_VERSION=$(CCPF_VERSION) \
@@ -139,6 +137,8 @@ make-subdirs-with-MAKECMDGOALS:
 		CCPF_PROJECT_VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) \
 		CCPF_FACTS_DEST_PATH=$(CCPF_FACTS_DEST_PATH) \
 			$(MAKE) $(MAKECMDGOALS) -C $$subDir; \
+		$(call logInfo,Finished make $(GREEN)$(MAKECMDGOALS)$(RESET) in $(GREEN)$$subDir$(RESET))
 	done
+	$(call logInfo,Finished make $(GREEN)$(MAKECMDGOALS)$(RESET) in all subdirectories)
 
 -include $(CCPF_CUSTOM_INCLUDE_FILES)
