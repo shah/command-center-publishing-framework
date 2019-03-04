@@ -70,15 +70,10 @@ local eth0 = import "eth0-interface-localhost.ccpf-facts.json";
 
 		.ONESHELL:
 		## Build the '%(id)s' container using %(dockerFile)s in this directory
-		%(targetsPrefix)sbuild-%(id)s: 
-			if [ -f %(dockerFile)s ]; then
-				docker images %(containerName)s
-				echo "Removing image %(containerName)s"
-				docker rmi --force %(containerName)s
-				docker build --force-rm --no-cache --tag %(containerName)s .
-			else
-				echo "No %(dockerFile)s found for %(containerName)s."
-			fi
+		%(targetsPrefix)sbuild-%(id)s: %(targetsPrefix)sshow-images-%(id)s
+			echo "Removing image %(containerName)s"
+			docker rmi --force %(containerName)s
+			docker-compose build --force-rm --no-cache
 
 		## Show images associated with '%(id)s' container
 		%(targetsPrefix)sshow-images-%(id)s:
