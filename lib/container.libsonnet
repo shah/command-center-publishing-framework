@@ -15,6 +15,10 @@ local eth0 = import "eth0-interface-localhost.ccpf-facts.json";
 				%(customPostStartScriptName)s %(containerName)s
 			fi
 
+		## Start the '%(id)s' container and then tail -f the docker logs
+		%(targetsPrefix)sstart-%(id)s-tail-logs: %(targetsPrefix)sstart-%(id)s
+			docker logs -f %(containerName)s
+
 		## Enter the '%(id)s' container shell
 		%(targetsPrefix)sshell-%(id)s:
 			docker run -it --entrypoint="/bin/sh" %(containerName)s 
