@@ -6,7 +6,7 @@ set -euo pipefail
 
 # TODO evaluate [fnm](https://github.com/Schniz/fnm), Fast and simple Node.js version manager
 
-export NVM_DIR="${NVM_DIR:-$VENDOR_HOME/nvm}" && (
+export NVM_DIR="${$VENDOR_HOME/nvm}" && (
     rm -rf "$NVM_DIR"
     git clone https://github.com/creationix/nvm.git "$NVM_DIR"
     cd "$NVM_DIR"
