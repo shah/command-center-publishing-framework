@@ -263,5 +263,26 @@ various CCPF artifacts:
 
 ## TODO
 
-* Check out [goexpose](https://github.com/phonkee/goexpose) to create webhooks
+* Implement [goexpose](https://github.com/phonkee/goexpose) to create webhooks
 * Check out [Distroless Docker Images](https://github.com/GoogleContainerTools/distroless) for language focused docker images, minus the operating system
+* Follow [Using Let’s Encrypt for internal servers](https://blog.heckel.xyz/2018/08/05/issuing-lets-encrypt-certificates-for-65000-internal-servers/)
+
+# Using the Command Center Publishing Framework (CCPF) in a Project
+
+TO use the CCPF, here's a quick reference:
+
+1. Create a new project folder
+
+    mkdir projectDir
+    cd projectDir
+
+2. Symlink the CCPF Makefile
+
+    ln -s /opt/command-center-publishing-framework/lib/Makefile .
+
+3. Run the doctor script to verify dependencies
+
+    make doctor
+
+4. 
+
