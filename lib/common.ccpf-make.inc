@@ -4,6 +4,14 @@ WHITE    := $(shell tput -Txterm setaf 7)
 RESET    := $(shell tput -Txterm sgr0)
 REDFLASH := $(shell tput -Txterm setaf 4)
 
+GOHOME ?= $(CCPF_PROJECT_VENDOR_HOME)/gohome
+GOPATH ?= $(CCPF_PROJECT_VENDOR_HOME)/gopath
+GO ?= $(GOHOME)/go/bin/go
+
+MAGE ?= $(GOPATH)/bin/mage
+MAGEFILE_GOCMD ?= $(GO)
+MAGEFILE_CACHE ?= $(GOHOME)/magefile_cache
+
 comma := ,
 .ONESHELL:
 define logInfo
@@ -12,11 +20,30 @@ define logInfo
 	fi
 endef
 
+## Install Google Go into vendor/gohome
 vendor/gohome:
 	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-golang-ecosystem.sh
 
-$(CCPF_PROJECT_VENDOR_HOME)/gohome:
+vendor/gopath:
 	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-golang-ecosystem.sh
+
+$(GOHOME):
+	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-golang-ecosystem.sh
+
+$(GOPATH):
+	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-golang-ecosystem.sh
+
+## Build and Install Mage into vendor/gopath/bin/mage
+$(MAGE): $(GOHOME) $(GOPATH)
+	$(call logInfo,$(GREEN)mage$(RESET) not found, building it in $(YELLOW)$(MAGE)$(RESET))
+	GOPATH="$(GOPATH)" $(GO) get -u -d github.com/magefile/mage
+	cd $(GOPATH)/src/github.com/magefile/mage && \
+		GOPATH="$(GOPATH)" MAGEFILE_GOCMD=$(MAGEFILE_GOCMD) $(GO) run bootstrap.go
+	GOPATH="$(GOPATH)" MAGEFILE_GOCMD=$(MAGEFILE_GOCMD) $(MAGE) --version
+
+## Vendorize mage and create its cache directory
+$(MAGEFILE_CACHE): $(MAGE)
+	mkdir -p $(MAGEFILE_CACHE)
 
 vendor/java/home:
 	VENDOR_HOME=$(CCPF_PROJECT_VENDOR_HOME) $(CCPF_HOME)/bin/vendorize-java-ecosystem.sh

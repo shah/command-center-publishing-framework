@@ -48,8 +48,10 @@
 
 	environment: {
 		common: {
-			"PATH" : $.vendor.goPath + "/bin:" + $.vendor.javaHome + "/bin:$PATH",
+			"PATH" : $.vendor.goPath + "/bin:" + $.vendor.goHome + "/go/bin:" + $.vendor.javaHome + "/bin:$PATH",
 			"JAVA_HOME" : $.vendor.javaHome,
+			"GO" : $.vendor.goHome + "/go/bin/go",
+			"MAGE" : $.vendor.goPath + "/bin/mage",
 			"GOHOME" : $.vendor.goHome,
 			"GOPATH" : $.vendor.goPath,
 			"NVM_DIR" : $.vendor.nvmDir,

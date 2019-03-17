@@ -52,9 +52,6 @@ check-binary-exists ${OSQUERY}i "${OSQUERY}i --version" "osQuery CLI not found, 
 GO=vendor/gohome/go/bin/go
 check-binary-exists $GO "$GO version" "Google Go not installed at $GO, vendor it using vendorize-golang-ecosystem.sh"
 
-MAGE=vendor/gopath/bin/mage
-check-binary-exists $MAGE "$MAGE -version" "Mage not installed at $MAGE, vendor it using vendorize-golang-ecosystem.sh"
-
 HUGO=$CCPF_HOME/bin/hugo
 check-binary-exists $HUGO "$HUGO version" "Hugo not found, but it's supposed to be part of the CCPF package"
 
