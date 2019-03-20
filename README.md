@@ -49,16 +49,17 @@ The CCPF defines a set of strategies and utilities that allows:
 * Creating client-side edge side includes (ESIs) for portions of an SSG which
   are dynamic.
 
-## How to Install the CCPF
+## How to Install the CCPF in your project
 
-Intial setup in default location:
+To setup the CCPF, create your project directory and then run the setup remotely:
 
-    curl https://raw.githubusercontent.com/shah/command-center-publishing-framework/master/bin/setup-CCPF.sh | bash
+    mkdir ccpf_project1
+    cd ccpf_project1
+    curl https://raw.githubusercontent.com/shah/command-center-publishing-framework/master/bin/vendorize-CCPF.sh | bash
 
-Intial setup in another location (e.g. /etc/CCPF):
+The opinionated default setup location for CCPF is:
 
-    export CCPF_HOME=/etc/CCPF
-    curl https://raw.githubusercontent.com/shah/command-center-publishing-framework/master/bin/setup-CCPF.sh | bash
+    ./vendor/command-center-publishing-framework
 
 ## How to Upgrade the CCPF
 
@@ -68,20 +69,20 @@ can be used to override configuration files so that your files instead of the de
 
 Therefore, to do a clean upgrade you just:
 
-    sudo rm -rf /opt/command-center-publishing-framework
-    curl https://raw.githubusercontent.com/shah/command-center-publishing-framework/master/bin/setup-CCPF.sh | bash
+    sudo rm -rf ./vendor/command-center-publishing-framework
+    curl https://raw.githubusercontent.com/shah/command-center-publishing-framework/master/bin/vendorize-CCPF.sh | bash
 
 In case you want to preserve files, you don't remove the old one, just:
 
-    curl https://raw.githubusercontent.com/shah/command-center-publishing-framework/master/bin/setup-CCPF.sh | bash
+    curl https://raw.githubusercontent.com/shah/command-center-publishing-framework/master/bin/vendorize-CCPF.sh | bash
 
-The setup-CCPF.sh script is smart enough to do a git pull if the **CCPF_HOME** directory already exists.
+The vendorize-CCPF.sh script is smart enough to do a git pull if the **CCPF_HOME** directory already exists.
 
 ## Checking Dependencies
 
 CCPF has some important dependencies. After installation, you should run:
 
-    /opt/command-center-publishing-framework/bin/doctor.sh
+    ./vendor/command-center-publishing-framework/bin/doctor.sh
 
 The output will look something like this:
 
@@ -134,7 +135,7 @@ These are the most useful environment variables to set before calling the Makefi
 sensible defaults:
 
 * **JSONNET_PATH** is a colon-separated path which indicates where Jsonnet configs should be searched.
-* **CCPF_HOME** is where the CCPF is installed (default is /opt/command-center-publishing-framework).
+* **CCPF_HOME** is where the CCPF is installed (default is ./vendor/command-center-publishing-framework).
 * **CCPF_LOG_LEVEL** should be set to INFO to see verbose messages as CCPF does its job (default is NONE).
 * **CCPF_FACTS_FILES** is where CCPF stores fact files - see "Facts Generator" section below for explanation.
 
@@ -266,23 +267,4 @@ various CCPF artifacts:
 * Implement [goexpose](https://github.com/phonkee/goexpose) to create webhooks
 * Check out [Distroless Docker Images](https://github.com/GoogleContainerTools/distroless) for language focused docker images, minus the operating system
 * Follow [Using Let’s Encrypt for internal servers](https://blog.heckel.xyz/2018/08/05/issuing-lets-encrypt-certificates-for-65000-internal-servers/)
-
-# Using the Command Center Publishing Framework (CCPF) in a Project
-
-TO use the CCPF, here's a quick reference:
-
-1. Create a new project folder
-
-    mkdir projectDir
-    cd projectDir
-
-2. Symlink the CCPF Makefile
-
-    ln -s /opt/command-center-publishing-framework/lib/Makefile .
-
-3. Run the doctor script to verify dependencies
-
-    make doctor
-
-4. 
 

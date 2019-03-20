@@ -13,7 +13,7 @@ CCPF_PROJECT_NAME ?= $(CURRENT_DIR_NAME)
 CCPF_PROJECT_HOME ?= $(CURRENT_DIR_PATH)
 CCPF_PROJECT_VENDOR_HOME ?= $(CCPF_PROJECT_HOME)/vendor
 
-CCPF_HOME ?= /opt/command-center-publishing-framework
+CCPF_HOME ?= $(CCPF_PROJECT_VENDOR_HOME)/command-center-publishing-framework
 CCPF_JSONNET ?= $(CCPF_HOME)/bin/jsonnet
 CCPF_JQ ?= $(CCPF_HOME)/bin/jq
 CCPF_LOG_LEVEL ?= "NONE"
@@ -116,11 +116,9 @@ reconfigure: unconfigure configure
 doctor:
 	$(CCPF_HOME)/bin/doctor.sh
 
-## Remove the vendor directory and all contents
-clean-vendor: 
-	rm -rf $(CCPF_PROJECT_VENDOR_HOME)
-
-clean-MAIN: unconfigure clean-vendor
+## Upgrade the vendorized CCPF version
+upgrade-CCPF:
+	$(CCPF_HOME)/bin/vendorize-CCPF.sh
 
 .ONESHELL:
 make-subdirs-with-MAKECMDGOALS:

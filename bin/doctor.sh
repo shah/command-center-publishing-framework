@@ -4,7 +4,7 @@ set -euo pipefail
 # Reviews all CCPF installation requirements and informs user of what's missing
 # Only focuses on utilities that aren't included as part of the CCPF/bin
 
-export CCPF_HOME="${CCPF_HOME:-/opt/command-center-publishing-framework}"
+export CCPF_HOME="${CCPF_HOME:-./vendor/command-center-publishing-framework}"
 
 GREEN=`tput -Txterm setaf 2`
 YELLOW=`tput -Txterm setaf 3`

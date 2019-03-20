@@ -42,7 +42,7 @@ Sample $CCPF_HOME/bin layout, note the symlinks:
     -rw-rw-r-- 1 snshah snshah  7393779 Feb 10 10:18 plantuml.1.2019.0.jar
     lrwxrwxrwx 1 snshah snshah       23 Feb 10 10:18 plantuml.jar -> ./plantuml.1.2019.0.jar
     -rw-rw-r-- 1 snshah snshah        0 Feb 10 10:30 README.md
-    -rwxrwxr-x 1 snshah snshah      826 Feb 10 10:18 setup-CCPF.sh
+    -rwxrwxr-x 1 snshah snshah      826 Feb 10 10:18 vendorize-CCPF.sh
     -rwxrwxr-x 1 snshah snshah     1318 Feb 10 10:18 vendorize-golang-ecosystem.sh
     -rwxrwxr-x 1 snshah snshah     1017 Feb 10 10:18 vendorize-java-ecosystem.sh
 
@@ -57,6 +57,7 @@ For complex dependencies like Java, .NET, Google Go, etc. we use a project-speci
 Sample $CCPF_PROJECT_HOME/vendor layout, note the easy to use structure:
 
     vendor
+    ├── command-center-publishing-framework
     ├── gohome
     │   ├── go
     │   ├── gocache

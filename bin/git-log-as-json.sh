@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CCPF_HOME="${CCPF_HOME:-/opt/command-center-publishing-framework}"
+CCPF_HOME="${CCPF_HOME:-./vendor/command-center-publishing-framework}"
 CCPF_JQ="${CCPF_JQ:-$CCPF_HOME/bin/jq}"
 
 JSON_FORMAT=$(cat <<-'END_JSON_FORMAT'

@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-export CCPF_HOME="${CCPF_HOME:-/opt/command-center-publishing-framework}"
-export CCPF_LIB_PATH=$CCPF_HOME/lib
-
-make -f $CCPF_LIB_PATH/Makefile $@
