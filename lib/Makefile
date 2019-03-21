@@ -6,11 +6,8 @@ CCPF_VERSION := 1.0.0
 SHELL := /bin/bash
 MAKEFLAGS := silent
 
-CURRENT_DIR_PATH := $(shell echo `pwd`)
-CURRENT_DIR_NAME := $(shell basename `pwd`)
-
-CCPF_PROJECT_NAME ?= $(CURRENT_DIR_NAME)
-CCPF_PROJECT_HOME ?= $(CURRENT_DIR_PATH)
+CCPF_PROJECT_HOME ?= $(shell echo `pwd`)
+CCPF_PROJECT_NAME ?= $(shell basename $(CCPF_PROJECT_HOME))
 CCPF_PROJECT_VENDOR_HOME ?= $(CCPF_PROJECT_HOME)/vendor
 
 CCPF_HOME ?= $(CCPF_PROJECT_VENDOR_HOME)/command-center-publishing-framework
